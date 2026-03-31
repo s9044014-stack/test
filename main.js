@@ -25,18 +25,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generateAndDisplayNumbers() {
         const numbers = new Set();
-        while(numbers.size < 6) {
+        while(numbers.size < 7) {
             numbers.add(Math.floor(Math.random() * 45) + 1);
         }
 
-        const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+        const numbersArray = Array.from(numbers);
+        const bonusNumber = numbersArray.pop(); // Take the last one as bonus
+        const sortedNumbers = numbersArray.sort((a, b) => a - b);
 
         numbersDisplay.innerHTML = ''; 
+        
+        // Add main numbers
         sortedNumbers.forEach(number => {
             const ball = document.createElement('div');
             ball.className = 'number-ball';
             ball.textContent = number;
             numbersDisplay.appendChild(ball);
         });
+
+        // Add plus sign
+        const plusSign = document.createElement('div');
+        plusSign.className = 'plus-sign';
+        plusSign.textContent = '+';
+        numbersDisplay.appendChild(plusSign);
+
+        // Add bonus number
+        const bonusBall = document.createElement('div');
+        bonusBall.className = 'number-ball bonus';
+        bonusBall.textContent = bonusNumber;
+        numbersDisplay.appendChild(bonusBall);
     }
 });

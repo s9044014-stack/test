@@ -92,6 +92,19 @@ h1 {
     gap: 0.8rem;
     margin-bottom: 2.5rem;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.plus-sign {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0 0.5rem;
+}
+
+.number-ball.bonus {
+    border: 2px solid var(--glow-color);
+    box-shadow: 0 0 15px var(--glow-color);
 }
 
 .number-ball {
