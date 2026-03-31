@@ -2,6 +2,27 @@
 
 :root {
   --glow-color: hsl(186 100% 69%);
+  --bg-color: #f0f0f0;
+  --container-bg: #ffffff;
+  --text-color: #1a1a1a;
+  --ball-bg-start: #ffffff;
+  --ball-bg-end: #e6e6e6;
+  --ball-text: #1a1a1a;
+  --shadow-color: rgba(0,0,0,0.1);
+  --title-color: #1a1a1a;
+  --title-shadow: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme {
+  --bg-color: #1a1a1a;
+  --container-bg: #2a2a2a;
+  --text-color: #ffffff;
+  --ball-bg-start: #3a3a3a;
+  --ball-bg-end: #1a1a1a;
+  --ball-text: #ffffff;
+  --shadow-color: rgba(0,0,0,0.5);
+  --title-color: #ffffff;
+  --title-shadow: rgba(255, 255, 255, 0.8);
 }
 
 *, *::before, *::after {
@@ -15,10 +36,33 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #1a1a1a;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#theme-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 2px solid var(--glow-color);
+  background: var(--container-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#theme-btn:hover {
+  background: var(--glow-color);
+  color: #000;
 }
 
 .glowing-btn {
@@ -107,93 +151,39 @@ html, body {
 }
 
 @keyframes faulty-flicker {
-  0% {
-    opacity: 0.1;
-  }
-  2% {
-    opacity: 0.1;
-  }
-  4% {
-    opacity: 0.5;
-  }
-  19% {
-    opacity: 0.5;
-  }
-  21% {
-    opacity: 0.1;
-  }
-  23% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 0.5;
-  }
-  83% {
-    opacity: 0.4;
-  }
-  87% {
-    opacity: 1;
-  }
+  0% { opacity: 0.1; }
+  2% { opacity: 0.1; }
+  4% { opacity: 0.5; }
+  19% { opacity: 0.5; }
+  21% { opacity: 0.1; }
+  23% { opacity: 1; }
+  80% { opacity: 0.5; }
+  83% { opacity: 0.4; }
+  87% { opacity: 1; }
 }
 
 @keyframes text-flicker {
-  0% {
-    opacity: 0.1;
-  }
-  2% {
-    opacity: 1;
-  }
-  8% {
-    opacity: 0.1;
-  }
-  9% {
-    opacity: 1;
-  }
-  12% {
-    opacity: 0.1;
-  }
-  20% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 0.3;
-  }
-  30% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 0.7;
-  }
-  72% {
-    opacity: 0.2;
-  }
-  77% {
-    opacity: 0.9;
-  }
-  100% {
-    opacity: 0.9;
-  }
+  0% { opacity: 0.1; }
+  2% { opacity: 1; }
+  8% { opacity: 0.1; }
+  9% { opacity: 1; }
+  12% { opacity: 0.1; }
+  20% { opacity: 1; }
+  25% { opacity: 0.3; }
+  30% { opacity: 1; }
+  70% { opacity: 0.7; }
+  72% { opacity: 0.2; }
+  77% { opacity: 0.9; }
+  100% { opacity: 0.9; }
 }
 
 @keyframes border-flicker {
-  0% {
-    opacity: 0.1;
-  }
-  2% {
-    opacity: 1;
-  }
-  4% {
-    opacity: 0.1;
-  }
-  8% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0.1; }
+  2% { opacity: 1; }
+  4% { opacity: 0.1; }
+  8% { opacity: 1; }
+  70% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
 @media only screen and (max-width: 600px) {
@@ -203,18 +193,20 @@ html, body {
 }
 
 h1 {
-    color: #fff;
+    color: var(--title-color);
     font-size: 2.5em;
     margin-bottom: 40px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 10px var(--title-shadow);
+    transition: all 0.3s ease;
 }
 
 .container {
     text-align: center;
-    background: #2a2a2a;
+    background: var(--container-bg);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 20px rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
 }
 
 .numbers-display {
@@ -233,15 +225,15 @@ h1 {
     justify-content: center;
     font-size: 1.8em;
     font-weight: bold;
-    color: #fff;
-    background: linear-gradient(145deg, #3a3a3a, #1a1a1a);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--ball-text);
+    background: linear-gradient(145deg, var(--ball-bg-start), var(--ball-bg-end));
+    box-shadow: 0 8px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .number-ball:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 20px var(--shadow-color);
 }
 
 #generate-btn {
