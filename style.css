@@ -30,9 +30,8 @@ body.dark-theme {
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
-  overflow: hidden;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -47,22 +46,72 @@ html, body {
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 10;
 }
 
 #theme-btn {
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 20px;
   border: 2px solid var(--glow-color);
   background: var(--container-bg);
   color: var(--text-color);
   cursor: pointer;
   font-weight: bold;
+  font-size: 0.9em;
   transition: all 0.3s ease;
 }
 
 #theme-btn:hover {
   background: var(--glow-color);
   color: #000;
+}
+
+.container {
+    text-align: center;
+    background: var(--container-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 20px rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+    width: 90%;
+    max-width: 600px;
+    margin: 60px 20px;
+}
+
+h1 {
+    color: var(--title-color);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--title-shadow);
+    transition: all 0.3s ease;
+}
+
+.numbers-display {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.number-ball {
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(40px, 10vw, 60px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 3vw, 1.8rem);
+    font-weight: bold;
+    color: var(--ball-text);
+    background: linear-gradient(145deg, var(--ball-bg-start), var(--ball-bg-end));
+    box-shadow: 0 8px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.number-ball:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 20px var(--shadow-color);
 }
 
 .glowing-btn {
@@ -74,18 +123,18 @@ html, body {
   border-radius: 0.45em;
   background: none;
   perspective: 2em;
-  font-size: 2em;
+  font-size: clamp(1rem, 4vw, 2rem);
   font-weight: 900;
-  letter-spacing: 1em;
+  letter-spacing: 0.5em;
   -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color);
   -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color);
   box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color);
   animation: border-flicker 2s linear infinite;
+  text-transform: uppercase;
 }
 
 .glowing-txt {
-  float: left;
-  margin-right: -0.8em;
+  margin-right: -0.4em;
   -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
   -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
@@ -186,56 +235,14 @@ html, body {
   100% { opacity: 1; }
 }
 
-@media only screen and (max-width: 600px) {
-  .glowing-btn {
-    font-size: 1em;
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
   }
-}
-
-h1 {
-    color: var(--title-color);
-    font-size: 2.5em;
-    margin-bottom: 40px;
-    text-shadow: 0 0 10px var(--title-shadow);
-    transition: all 0.3s ease;
-}
-
-.container {
-    text-align: center;
-    background: var(--container-bg);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px var(--shadow-color), 0 0 20px rgba(255,255,255,0.05);
-    transition: all 0.3s ease;
-}
-
-.numbers-display {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.number-ball {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--ball-text);
-    background: linear-gradient(145deg, var(--ball-bg-start), var(--ball-bg-end));
-    box-shadow: 0 8px 15px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-}
-
-.number-ball:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 20px var(--shadow-color);
-}
-
-#generate-btn {
-    margin-top: 20px;
+  .numbers-display {
+    gap: 0.5rem;
+  }
+  .glowing-btn {
+    letter-spacing: 0.3em;
+  }
 }
