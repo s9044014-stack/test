@@ -2,7 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
     const numbersDisplay = document.getElementById('numbers');
     const themeBtn = document.getElementById('theme-btn');
+    const clockDisplay = document.getElementById('clock');
     const body = document.body;
+
+    // Clock function
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        clockDisplay.textContent = timeString;
+    }
+
+    // Initial clock update and set interval
+    updateClock();
+    setInterval(updateClock, 1000);
 
     // Check for saved theme
     const savedTheme = localStorage.getItem('theme');
